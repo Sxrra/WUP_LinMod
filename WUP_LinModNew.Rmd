@@ -34,17 +34,39 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 ## Model 1 SIM~ARMS
 
 ### scatterplot
+```{r}
+boxplot(SIMS~ARM,data=data)
+```
+
+
+This model is kind of difficult to comprehend, however it seems that SIMS increases ARM by only a little.
 
 ### Numerical results
+```{r}
+cor(SIMS~ARM,data=data)
+```
 
+The average amount is 0.6860073. This is how much value is given to ARM.
 
 ### Inferential  (Build model.1)
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
+
+The p-value is 2.2e-16.
 
 #### Predict at target point
 
+We can barely tell the difference in SIMS~ARM because of how small the p-value. In this case I would reject the null hypothesis.
+
 
 #### scatterplot with model fit
-  
+```{r}
+boxplot(SIMS~ARM,data=data, SIMS~ARM + geom_point(aes(col=Sex)) + geom_smooth(method=lm))
+```
+
+
 
 ## Model 2 SIM~GRIP
 

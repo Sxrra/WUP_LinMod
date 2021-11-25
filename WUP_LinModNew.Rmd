@@ -67,29 +67,53 @@ boxplot(SIMS~ARM,data=data, SIMS~ARM + geom_point(aes(col=Sex)) + geom_smooth(me
 ```
 
 
-
 ## Model 2 SIM~GRIP
 
 ### Now add in scatterplot
+```{r}
+boxplot(SIMS~GRIP,data=data)
+```
 
+
+The Plot shows the GRIP increasing because of SIMS.
 
 ### Numerical results 
+```{r}
+cor(SIMS~GRIP,data=data)
+```
+
+The average amount is 0.6860073. This is how much value is given to GRIP.
 
 
 ### Inferential  (Build model.2)
-  
+```{r}
+model.2 <- lm(SIMS~GRIP,data=data)
+summary.lm(model.2)
+```  
+
+
+The p-value is 2.2e.16.
+
+
 
 #### predict model.2 at target point
 
+
+The p-value is yet too small to tell the difference so therefore I will reject the null hypothesis.
+
 #### now add the model fit to our plot for model.2
-  
+```{r}
+boxplot(SIMS~GRIP,data=data,SIMS~GRIP + geom_point(aes(col=Sex)) + geom_smooth(method=lm))
+```
+
+boxplot(SIMS~GRIP,data=data,SIMS~GRIP + geom_point(aes(col=Sex)) + geom_smooth(method=lm)
+
 
 
 ## Model 3 SIM~ARM+GRIP
 
 ### Numerical results (cor)
 
-`
   
 ### Inferential  (Build 2-dimentional model.3)
 
